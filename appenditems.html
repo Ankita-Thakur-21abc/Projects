@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <title>Browser</title>
+</head>
+  <body>
+<ul  id="olist">
+<li> First element </li>
+<li> Second Element </li>
+<li> Third Element </li>
+</ul>
+
+<button id="addne"> Add </button>
+<button id="remove"> Remove </button>
+<button id="replace"> Replace </button>
+<br/>
+<br/>
+<br/>
+
+  <script>
+var olist=document.getElementById("olist");
+
+function add_ne(){
+  console.log('addne');
+var ne=document.createElement('li');
+olist.append(ne,olist.lastElementChild);
+ 
+ne.innerHTML="New item added";
+}
+
+
+function remove_ne(){
+olist.removeChild(olist.lastElementChild);
+}
+
+function replace_old(){
+var re=document.createElement('li');
+re.innerHTML="This is new item after replacement";
+olist.replaceChild(re,olist.lastElementChild);
+
+}
+
+
+var addbtn=document.getElementById('addne');
+addbtn.addEventListener('click',add_ne);
+
+
+var rembtn=document.getElementById('remove');
+rembtn.addEventListener('click',remove_ne);
+
+var repbtn=document.getElementById('replace');
+repbtn.addEventListener('click',replace_old);
+
+
+
+
+  </script>
+</body>
+
+</html>
