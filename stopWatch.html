@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            font-size:60px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span id="hh">00</span>:
+        <span id="mm">00</span>:
+        <span id="ss">00</span>
+        <br/>
+        <br/>
+        
+        <button id="start" onclick="start()">Start</button>
+        <button id="stop" onclick="stop()">Stop</button>
+        <button id="reset" onclick="reset()">Reset</button>
+        <button id="lap" onclick="lap()">Lap</button>
+
+        <ol id="list">
+
+        </ol>
+    </div>
+    <script>
+var hour=0;
+var min=0;
+var sec=0;
+var interval;
+function start(){
+    interval=setInterval(stopwatch,1000);
+}
+
+function stopwatch(){
+hh=document.getElementById("hh");
+mm=document.getElementById("mm");
+ss=document.getElementById("ss");
+sec++;
+if(sec>59){
+    min++;
+    sec=0;
+}
+if(min>59){
+    hour++;
+    min=0;
+}
+if(hour>23){
+    hour=0;
+}
+
+hh.innerText=hour;
+mm.innerText=min;
+ss.innerText=sec;
+
+
+}
+
+
+function stop(){
+    console.log('stop called');
+    clearInterval(interval);
+}
+function reset(){
+    stop();
+    hh=document.getElementById("hh");
+    mm=document.getElementById("mm");
+    ss=document.getElementById("ss");
+hh.innerText="00";
+mm.innerText="00";
+ss.innerText="00";
+hour=0;
+min=0;
+sec=0;
+
+}
+
+function lap(){
+    var list=document.getElementById('list');
+    var ne=document.createElement('li');
+    let str = `${hour} hour ${min} min ${sec} sec`;
+    ne.innerHTML=str;
+    list.insertBefore(ne,list.firstElementChild);
+    reset();
+}
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
